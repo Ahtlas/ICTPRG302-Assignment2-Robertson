@@ -72,6 +72,8 @@ def view_credentials():
     print("{:<20} {:<20} {:<20}".format("Username", "Password", "Resource"))
     print("-" * 60)
 
+    credentails_list = [] #Data structure?
+
     with open(FILENAME, 'r') as f:
         for line in f:
             line = line.strip()
@@ -86,6 +88,11 @@ def view_credentials():
             resource = rot3_decrypt(enc_resource)
             #Display spaced out 
             print("{:<20} {:<20} {:<20}".format(username, password, resource))
+
+            credentails_list.append((username, password, resource)) #Tuple
+
+    for item in credentails_list:
+        print("{:<20} {:<20} {:<20}".format(item[0], item[1], item[2]))
 
 #Main program loop
 def main():
